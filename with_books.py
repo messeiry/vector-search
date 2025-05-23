@@ -458,15 +458,17 @@ async def rag(query: str) -> Optional[Dict]:
 
 # Answer:"""
 
-    prompt = f"""
-    You are an AI assistant with access to a database of books with detailed information about titles, authors, genres, and descriptions.
-
-    Question from user: {query}
-
-    Use the following data context to provide a concise, accurate, and helpful answer:  
-    {context}
-
-    Answer (limit to a few informative sentences): 
+    prompt = f"""Your name is Angela, You are an AI assistant with access to a database of books with detailed information about titles, authors, genres, and descriptions.
+the user asked the following query
+<query>
+{query}
+<query>
+, the following context was returned from database as relevent information:
+Use the following data context to provide a concise, accurate, and helpful answer:  
+<context>
+{context}
+<context>
+Answer (limit to a few informative sentences) with a summary of the relevant information from the context, and keep conversation going
     """
             
     # Generate response using Ollama SDK
